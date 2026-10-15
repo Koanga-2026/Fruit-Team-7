@@ -8,6 +8,10 @@ function Home() {
   const filteredFruit = fruitData.filter((fruit) =>
     fruit.name.toLowerCase().includes(search.toLowerCase()),
   )
+
+  if (filteredFruit.length === 0) {
+    return <p>No fruits found</p>
+  }
   return (
     <div>
       <h2>Home</h2>
@@ -20,7 +24,6 @@ function Home() {
             <Link to={`/fruits/${fruit.name}`}>View {fruit.name}</Link>
           </div>
         ))}
-        {filteredFruit.length === 0 && <p>No fruits found</p>}
       </div>
     </div>
   )
