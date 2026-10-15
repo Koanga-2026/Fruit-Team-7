@@ -1,18 +1,26 @@
 import fruitData from '../data/fruits'
 import { Link } from 'react-router'
+import { useState } from 'react'
+import SearchBox from './SearchBox'
 
 function Home() {
+  const [search, setSearch] = useState('')
+  const filteredFruit = fruitData.filter((fruit) =>
+    fruit.name.toLowerCase().includes(search.toLowerCase()),
+  )
   return (
     <div>
       <h2>Home</h2>
       <p>React Development has Begun</p>
+      <SearchBox value={search} onChange={setSearch} />
       <div className="fruit-list">
-        {fruitData.map((fruit) => (
+        {filteredFruit.map((fruit) => (
           <div className="fruit-card" key={fruit.name}>
             <h3>{fruit.name}</h3>
             <Link to={`/fruits/${fruit.name}`}>View {fruit.name}</Link>
           </div>
         ))}
+        {filteredFruit.length === 0 && <p>No fruits found</p>}
       </div>
     </div>
   )
