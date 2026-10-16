@@ -10,6 +10,7 @@ function Home() {
   const [sortPrice, setSortPrice] = useState('default')
   //using the searchbox we want to be able to filter by season aswell (then eventually sort (by price))
   //the search and the filter need to match (when returned)
+  const [conflict, setConflict] = useState(false)
   const filteredFruit = fruitData
     .filter((fruit) => {
       const matchesSearch = fruit.name
@@ -49,7 +50,15 @@ function Home() {
         sortPrice={sortPrice}
         setSortPrice={setSortPrice}
       />
-
+      <button
+        className="deploy-to-prod-btn"
+        onClick={() =>
+          alert('Deploying to production... just kidding. Go home. 🍺')
+        }
+      >
+        <span className="deploy-normal">🚀 Deploy to Prod</span>
+        <span className="deploy-panic">😰 Are you sure?! It's Friday!</span>
+      </button>
       <div className="fruit-list">
         {filteredFruit.map((fruit) => (
           <div className="fruit-card" key={fruit.name}>
