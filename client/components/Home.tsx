@@ -33,8 +33,14 @@ function Home() {
   //add in states to searchbox //
   return (
     <div>
+      <div className="shuriken shuriken-1"></div>
+      <div className="shuriken shuriken-2"></div>
+      <div className="shuriken shuriken-3"></div>
+      <div className="shuriken shuriken-4"></div>
+      <div className="shuriken shuriken-5"></div>
+      <div className="shuriken shuriken-6"></div>
       <h2>Home</h2>
-      <p>React Development has Begun</p>
+      <p>Team 7's Fruit Stand!</p>
       <SearchBox
         value={search}
         onChange={setSearch}
@@ -47,8 +53,18 @@ function Home() {
       <div className="fruit-list">
         {filteredFruit.map((fruit) => (
           <div className="fruit-card" key={fruit.name}>
-            <h3>{fruit.name}</h3>
-            <Link to={`/fruits/${fruit.name}`}>View {fruit.name}</Link>
+            <img
+              className="fruit-image"
+              src={fruit.imageUrl}
+              alt={fruit.name}
+              loading="lazy"
+            />
+            <div className="fruit-card-body">
+              <span className="fruit-emoji">{fruit.emoji}</span>
+              <h3>{fruit.name}</h3>
+              <p className="fruit-season">{fruit.season}</p>
+              <Link to={`/fruits/${fruit.name}`}>View {fruit.name}</Link>
+            </div>
           </div>
         ))}
       </div>
@@ -57,11 +73,3 @@ function Home() {
 }
 
 export default Home
-
-/*
-Show every fruit as a card using .map(), with its name and a link to its own page.
-
-You'll practise: importing data, .map(), keys and Link
-
-Done when: every fruit shows as a card, and clicking one opens its fruit page.
-*/

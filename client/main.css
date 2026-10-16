@@ -1,10 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --naruto: #ff7a00;
+  --sasuke: #1b2a6b;
+  --sakura: #f4a6c0;
+  --kakashi: #cfd8e3;
+  --dark: #0d1640;
+  --scroll: #f7e9c8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #faf8f1;
-  color: #0a1520;
+  margin: 0;
+  background: linear-gradient(160deg, #ff9a1f 0%, #ff5e00 50%, #1b2a6b 100%);
+  background-attachment: fixed;
+  color: var(--dark);
   font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h2,
+h3 {
+  font-family: 'Bangers', Impact, sans-serif;
+  letter-spacing: 2px;
+}
+
+/* Title: Leaf Village headband plate */
+h2 {
+  display: inline-block;
+  margin: 32px 0 8px;
+  padding: 8px 40px;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-transform: uppercase;
+  color: var(--sasuke);
+  background: linear-gradient(180deg, #eef3f8, #9aa8b8 50%, #eef3f8);
+  border: 4px solid var(--sasuke);
+  border-radius: 8px;
+  box-shadow: 0 5px 0 var(--dark);
 }
 
 .navlink-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
+  padding: 16px;
+  background: var(--sasuke);
+  border-bottom: 4px solid var(--naruto);
+}
+
+.navlink-container a {
+  color: white;
+  font-family: 'Bangers', sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+
+.navlink-container a:hover {
+  color: var(--naruto);
+}
+
+/* Search box and dropdowns */
+input,
+select {
+  max-width: 100%;
+  margin: 6px;
+  padding: 10px 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--sasuke);
+  background: var(--scroll);
+  border: 3px solid var(--sasuke);
+  border-radius: 10px;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  box-shadow:
+    0 0 15px #5ad1ff,
+    0 0 30px #2a9dff;
+}
+
+button {
+  margin: 4px;
+  padding: 8px 14px;
+  font-family: 'Bangers', sans-serif;
+  letter-spacing: 1px;
+  color: white;
+  background: var(--naruto);
+  border: 3px solid var(--sasuke);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--sasuke);
+}
+
+/* 4 cards across */
+.fruit-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  color: white;
+  font-style: italic;
+}
+
+/* Each card: ninja scroll with a Team 7 stripe */
+.fruit-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(180deg, #fbf0d5, #ecd9a8);
+  border: 4px solid var(--sasuke);
+  border-radius: 12px;
+  box-shadow: 0 6px 0 var(--dark);
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+/* Naruto orange, Sasuke blue, Sakura pink */
+.fruit-card::before {
+  content: '';
+  display: block;
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    var(--naruto) 33%,
+    var(--sasuke) 33% 66%,
+    var(--sakura) 66%
+  );
+}
+
+/* Chakra glow on hover */
+.fruit-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 14px 0 var(--dark),
+    0 0 25px #5ad1ff;
+}
+
+.fruit-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--sasuke);
+  background: var(--kakashi);
+}
+
+.fruit-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
+}
+
+.fruit-emoji {
+  font-size: 1.6rem;
+}
+
+.fruit-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--sasuke);
+}
+
+.fruit-season {
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--sasuke);
+}
+
+.fruit-card a {
+  padding: 6px 16px;
+  color: white;
+  background: var(--naruto);
+  font-family: 'Bangers', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 3px solid var(--sasuke);
+  border-radius: 8px;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+
+.fruit-card a:hover {
+  background: var(--sasuke);
+  transform: scale(1.08);
+}
+
+/* Fruit detail page: centred strip, a third of the page wide */
+.fruit-detail-image {
+  display: block;
+  width: 33%;
+  min-width: 180px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto;
+  border: 4px solid var(--sasuke);
+  border-radius: 10px;
+  box-shadow: 0 5px 0 var(--dark);
+}
+
+/* Tablets: 3 across */
+@media (max-width: 768px) {
+  .fruit-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Phones: 2 across */
+@media (max-width: 480px) {
+  .fruit-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 16px 14px 40px;
+  }
+
+  .fruit-image {
+    height: 100px;
+  }
+
+  input,
+  select {
+    width: 90%;
+  }
+}
+
+/* Flying shurikens in the background */
+.shuriken {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, transparent 0 10%, #cfd8e3 11%);
+  clip-path: polygon(
+    50% 0%,
+    61% 39%,
+    100% 50%,
+    61% 61%,
+    50% 100%,
+    39% 61%,
+    0% 50%,
+    39% 39%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes shuriken-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes path-a {
+  0% {
+    translate: 5vw 10vh;
+  }
+  25% {
+    translate: 85vw 25vh;
+  }
+  50% {
+    translate: 70vw 80vh;
+  }
+  75% {
+    translate: 15vw 60vh;
+  }
+  100% {
+    translate: 5vw 10vh;
+  }
+}
+
+@keyframes path-b {
+  0% {
+    translate: 90vw 90vh;
+  }
+  30% {
+    translate: 20vw 70vh;
+  }
+  60% {
+    translate: 40vw 10vh;
+  }
+  100% {
+    translate: 90vw 90vh;
+  }
+}
+
+@keyframes path-c {
+  0% {
+    translate: 50vw 50vh;
+  }
+  20% {
+    translate: 90vw 15vh;
+  }
+  50% {
+    translate: 10vw 85vh;
+  }
+  80% {
+    translate: 80vw 60vh;
+  }
+  100% {
+    translate: 50vw 50vh;
+  }
+}
+
+.shuriken-1 {
+  animation:
+    shuriken-spin 0.8s linear infinite,
+    path-a 10s ease-in-out infinite;
+}
+.shuriken-2 {
+  animation:
+    shuriken-spin 0.6s linear infinite,
+    path-b 13s ease-in-out infinite -4s;
+  width: 45px;
+  height: 45px;
+}
+.shuriken-3 {
+  animation:
+    shuriken-spin 1s linear infinite reverse,
+    path-c 16s ease-in-out infinite -8s;
+  width: 80px;
+  height: 80px;
+}
+.shuriken-4 {
+  animation:
+    shuriken-spin 0.7s linear infinite,
+    path-b 9s ease-in-out infinite -2s;
+  width: 35px;
+  height: 35px;
+}
+.shuriken-5 {
+  animation:
+    shuriken-spin 0.9s linear infinite reverse,
+    path-a 14s ease-in-out infinite -7s;
+  width: 55px;
+  height: 55px;
+}
+.shuriken-6 {
+  animation:
+    shuriken-spin 0.5s linear infinite,
+    path-c 11s ease-in-out infinite -5s;
+  width: 40px;
+  height: 40px;
 }

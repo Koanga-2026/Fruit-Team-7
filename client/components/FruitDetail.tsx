@@ -18,7 +18,11 @@ function FruitDetail() {
       <h2>
         {fruit.name} {fruit.emoji}
       </h2>
-      <img src={fruit.imageUrl} alt={fruit.name} />
+      <img
+        className="fruit-detail-image"
+        src={fruit.imageUrl}
+        alt={fruit.name}
+      />
       <p>You are looking at {fruit.name}</p>
       <p>Description: {fruit.description}</p>
       <p>Interesting Fact: {fruit.interestingFact}</p>
